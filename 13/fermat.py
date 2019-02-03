@@ -29,7 +29,7 @@ def is_prime(num):
         return True
     if (num < 2) or (num % 2 == 0):
         return False
-    return all(num % i for i in mrange(3, 10 ** 7, 2))
+    return all(num % i for i in mrange(3, 10 ** 5, 2))
 
 
 def generate_prime_candidate(length):

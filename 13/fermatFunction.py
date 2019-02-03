@@ -1,4 +1,6 @@
 import cProfile
+import matplotlib.pyplot as plt
+
 from random import randrange
 
 import fermat
@@ -19,13 +21,16 @@ def run():
         if fermat.is_prime(fx):
             Xs.append(x)
             Ys.append(fx)
-            print  x, fermat.is_prime(x), fx, 'IS prime'
-        # else:
-        #     print i, x, fx
+            print  'x:', x, 'f(x):', fx, 'IS prime'
+
     print Xs
     print Ys
+    plt.plot(Xs,Ys,'ro')
+    plt.ylabel('some numbers')
+    plt.show()
 
 
 if __name__ == '__main__':
     rounds = 10 ** 7
+
     run()
