@@ -33,10 +33,25 @@ def find_factors(N):
         print(N, "is not a prime number")
 
 
+def egcd(a, b):
+    if a == 0:
+        return b, 0, 1
+    else:
+        g, y, x = egcd(b % a, a)
+        return g, x - (b // a) * y, y
+
+
+def modinv(a, m):
+    g, x, y = egcd(a, m)
+    if g != 1:
+        raise Exception('modular inverse does not exist')
+    else:
+        return x % m
+
+
 def get_d(p, q, e):
-    FN = (p - 1) * (q - 1)  # FΝ=11200
-                            # d=e^-1modF(Ν)'''
-    return (e ** (-1)) % FN #auto prepei na allaxtei, na vrethei o swstos tropos upologismou wste na vgazei swsto apotelesma 1179
+    fn = (p - 1) * (q - 1)
+    return modinv(e, fn)
 
 
 if __name__ == '__main__':
