@@ -1,4 +1,6 @@
+from datetime import time
 from random import randrange, getrandbits
+import cProfile
 
 
 def is_prime(n, k=128):
@@ -59,4 +61,6 @@ def generate_prime_number(length):
 
 
 if __name__ == '__main__':
-    print generate_prime_number(800)
+
+    cProfile.run('print generate_prime_number(800)')
+

@@ -1,0 +1,61 @@
+============    MILLER-RABIN  2048  ============
+
+C:\Users\diakovidis\Desktop\crypto-pms\venv\Scripts\python.exe C:/Users/diakovidis/Desktop/crypto-pms/11/miller-rabin.py
+19396060737241730914281297603180799830076570369713060502744196495216316726236171718226205459354179084090657419245163630797829282690574130793290226141748438128713072607373626298495639326677386783361193834950347271210218373039636977614033792936174257581456640427643947853504399076850677496913749174167408933651870009651170554300379687175142430718867219121523011231030740081203647318735500947973815032630596532354097796785016541164404293565078166452364291558870947184361866245493431497502888023364821911642503679352071354015044154795020283420450557426782890499812936005054886606247736190434164282731198521575672548198143
+         26661 function calls in 453.887 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000  453.887  453.887 <string>:1(<module>)
+     2527    0.008    0.000    0.017    0.000 miller-rabin.py:41(generate_prime_candidate)
+        1    0.007    0.007  453.887  453.887 miller-rabin.py:52(generate_prime_number)
+     2528    0.047    0.000  453.862    0.180 miller-rabin.py:6(is_prime)
+     2654    0.025    0.000    0.053    0.000 random.py:177(randrange)
+     2654    0.011    0.000    0.028    0.000 random.py:246(_randbelow)
+     2654    0.011    0.000    0.011    0.000 {math.log}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+     6201    0.015    0.000    0.015    0.000 {method 'getrandbits' of '_random.Random' objects}
+     4913  453.756    0.092  453.756    0.092 {pow}
+     2527    0.006    0.000    0.006    0.000 {range}
+
+
+============    MILLER-RABIN  800  ============
+
+C:\Users\diakovidis\Desktop\crypto-pms\venv\Scripts\python.exe C:/Users/diakovidis/Desktop/crypto-pms/11/miller-rabin.py
+4524012362818526309895531075646965460654577131481465689423003516504458987439985201725958537618201076590009561840794169562178323721019945158763005392477706788182844096018064879952132501013855823371143045742426618333593333238356823099661745129
+         1187 function calls in 2.169 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    2.169    2.169 <string>:1(<module>)
+       30    0.000    0.000    0.000    0.000 miller-rabin.py:41(generate_prime_candidate)
+        1    0.000    0.000    2.169    2.169 miller-rabin.py:52(generate_prime_number)
+       31    0.001    0.000    2.168    0.070 miller-rabin.py:6(is_prime)
+      157    0.001    0.000    0.002    0.000 random.py:177(randrange)
+      157    0.001    0.000    0.001    0.000 random.py:246(_randbelow)
+      157    0.000    0.000    0.000    0.000 {math.log}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+      280    0.000    0.000    0.000    0.000 {method 'getrandbits' of '_random.Random' objects}
+      342    2.165    0.006    2.165    0.006 {pow}
+       30    0.000    0.000    0.000    0.000 {range}
+
+============    FERMAT  2048bits and 10.000.000 rounds  ============
+
+C:\Users\diakovidis\Desktop\crypto-pms\venv\Scripts\python.exe C:/Users/diakovidis/Desktop/crypto-pms/11/fermat.py
+25194822317535758078125431921104510584756098218969522210018008727060519204619849915831027122491927587786522547510193018812812005315097749328290543001057294603681643915841286511588125304951937906325632622611589619718103854990204814111279358351039397861605058087071039042165949678995464884205300717262606981751845597757047547189323110570738157422482582676388783614313497730816348327496410426399155748869798792235863303042687306700607705023120952958403830743111934150049807476464829486568741538931820258512247027136888122309766918912502966264157151136571964730062581001170684940470539925247793984549619168138368495025321
+         12330494 function calls in 23.192 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000   23.192   23.192 <string>:1(<module>)
+  6165215    0.933    0.000    0.933    0.000 fermat.py:21(mrange)
+       16    0.000    0.000   23.192    1.450 fermat.py:27(is_prime)
+  6165215   21.524    0.000   22.457    0.000 fermat.py:32(<genexpr>)
+       15    0.000    0.000    0.000    0.000 fermat.py:35(generate_prime_candidate)
+        1    0.000    0.000   23.192   23.192 fermat.py:46(generate_prime_number)
+       15    0.736    0.049   23.192    1.546 {all}
+        1    0.000    0.000    0.000    0.000 {method 'disable' of '_lsprof.Profiler' objects}
+       15    0.000    0.000    0.000    0.000 {method 'getrandbits' of '_random.Random' objects}
