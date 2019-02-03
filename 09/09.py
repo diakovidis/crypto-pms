@@ -2,9 +2,6 @@
 # coding: utf-8
 # -*- coding: utf-8 -*-
 
-import math
-
-
 def fast_pow(C, d):
     text = []
 
