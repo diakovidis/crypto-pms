@@ -1,91 +1,40 @@
-character_map = {'A': '00000', 'B': '00001', 'C': '00010', 'D': '00011', 'E': '00100', 'F': '00101', 'G': '00110',
-                 'H': '00111', 'I': '01000', 'J': '01001', 'K': '01010', 'L': '01011', 'M': '01100', 'N': '01101',
-                 'O': '01110', 'P': '01111', 'Q': '10000', 'R': '10001', 'S': '10010', 'T': '10011', 'U': '10100',
-                 'V': '10101', 'W': '10110', 'X': '10111', 'Y': '11000', 'Z': '11001', '.': '11010', '!': '11011',
-                 '?': '11100', '(': '11101', ')': '11110', '-': '11111'}
+#!/usr/bin/env python
+# coding: utf-8
+# -*- coding: utf-8 -*-
+from collections import deque
 
 
-def xor(m, k):
-    """Given strings m and k of characters 0 or 1,
-    it returns the string representing the XOR
-    between each character in the same position.
-    This means that m and k should be of the same length.
-
-    Use this function both for encrypting and decrypting!"""
-    r = []
-    for i, j in zip(m, k):
-        r.append(str('{0:05b}'.format(int(i, 2) ^ int(j, 2))))  # xor between bits i and j
-    return r
-
-
-def string_to_bits(key):
-    bits = []
-    for c in key:
-        bits.append(character_map[c.capitalize()])
-    return bits
-
-
-def bits_to_string(bits):
-    # reverse the map
-    string = []
-    p = dict(zip(character_map.values(), character_map.keys()))
+def custom_shift(bits):
+    bits_in_list = []
     for bit in bits:
-        string.append(p[bit])
-    return string
+        bits_in_list.append(bit)
+
+    original = deque(bits_in_list)
+    LS6 = deque(bits_in_list)
+    LS10 = deque(bits_in_list)
+    LS6.rotate(-6)
+    LS10.rotate(-10)
+
+    result = []
+    for bit in range(0, 16):
+        result.append(int(original[bit]) ^ int(LS6[bit]) ^ int(LS10[bit]))
+    return result
 
 
-def decode(string):
-    print 'text: ', string
-    bit_list_string = string_to_bits(string)
-    print 'as binary: ', bit_list_string
-
-    bit_list_int = []
-    bit_list_decoded = []
-
-    for bit_str in bit_list_string:
-        bit_as_int = []
-        for c in bit_str:
-            bit_as_int.append(int(c))
-        bit_list_int.append(bit_as_int)
-
-    for bit_sequence in bit_list_int:
-        for m in bit_sequence:
-            tmp1 = m << 6
-            tmp2 = m << 10
-            bit_list_decoded.append(m ^ tmp1 ^ tmp2)
-
-    return bit_list_decoded
-
-
-def bitshiftEncrypt(word):
-    newWord = ""
+def bitshiftEncryptASCII(word):
     for i in word:
-        shift = '{:07b}'.format(ord(i) + 1).zfill(16)
-        newShift = shift[1:]
-        newShift += shift[0]
-        newWord += chr(int(newShift, 2))
-    print(newWord)
+        bits = '{:07b}'.format(ord(i)).zfill(16)
+        shifted_bits = custom_shift(bits)
+    print 'shifted, ', (int(''.join(map(str, shifted_bits)), 2))
 
 
-def bytes2int(str):
-    res = ord(str[0])
-    for ch in str[1:]:
-        res <<= 8
-        res |= ord(ch)
-    return res
-
-
-def int2bytes(n):
-    res = []
-    while n:
-        ch = n & 0b11111111
-        res.append(chr(ch))
-        n >>= 8
-    return ''.join(reversed(res))
+def bitshiftEncryptInt(int):
+    bits = "{0:b}".format(int).zfill(16)
+    shifted_bits = custom_shift(bits)
+    return long(''.join(map(str, shifted_bits)), 2)
 
 
 if __name__ == '__main__':
-    # print 'decode', decode('b')
-    bytes = 'abcdefghijklmnopqrstuv'
 
-    print 'abcdefghijklmnopqrstuv', (bytes2int(bytes))
+    for i in range(0, 20):
+        print 'encrypt(', i, ')', '=', bitshiftEncryptInt(i), bitshiftEncryptInt(i) / 1089
