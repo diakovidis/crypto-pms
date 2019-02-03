@@ -6,6 +6,7 @@ character_map = {'A': '00000', 'B': '00001', 'C': '00010', 'D': '00011', 'E': '0
                  'V': '10101', 'W': '10110', 'X': '10111', 'Y': '11000', 'Z': '11001', '.': '11010', '!': '11011',
                  '?': '11100', '(': '11101', ')': '11110', '-': '11111'}
 
+
 def xor(m, k):
     """Given strings m and k of characters 0 or 1,
     it returns the string representing the XOR
