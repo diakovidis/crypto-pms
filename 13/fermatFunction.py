@@ -1,4 +1,3 @@
-import cProfile
 import matplotlib.pyplot as plt
 
 from random import randrange
@@ -13,7 +12,7 @@ def feedback(x):
 def run():
     Xs = []
     Ys = []
-    for i in range(0, 200):
+    for i in range(0, sample_size):
 
         x = randrange(2, 10 ** 4)
         fx = abs(feedback(x))
@@ -25,12 +24,14 @@ def run():
 
     print Xs
     print Ys
-    plt.plot(Xs,Ys,'ro')
-    plt.ylabel('some numbers')
-    plt.show()
+    if (plot_flag):
+        plt.plot(Xs,Ys,'ro')
+        plt.ylabel('some numbers')
+        plt.show()
 
 
 if __name__ == '__main__':
-    rounds = 10 ** 7
+    sample_size = 200
 
+    plot_flag = False
     run()
